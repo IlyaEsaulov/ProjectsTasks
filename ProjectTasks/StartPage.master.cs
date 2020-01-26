@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ProjectTasks
 {
-    public partial class StartPage : System.Web.UI.Page
+    public partial class StartPage : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

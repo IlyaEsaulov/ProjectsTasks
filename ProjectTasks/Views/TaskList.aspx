@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TaskList.aspx.cs" Inherits="ProjectTasks.Views.TaskList" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/StartPage.master" AutoEventWireup="true" CodeBehind="TaskList.aspx.cs" Inherits="ProjectTasks.Views.TaskList" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="TaskList" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <div>
             <asp:Button runat="server" ID="CreateNewTask"  PostBackUrl="Task.aspx" Text="Create New Task"/>
 
@@ -45,8 +37,5 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
-
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>

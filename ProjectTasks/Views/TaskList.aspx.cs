@@ -9,9 +9,9 @@ namespace ProjectTasks.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TasksControllers tasks = new TasksControllers();
-            ListTask.DataSource = tasks.TaskList();
-            ListTask.DataBind();
+                TasksControllers tasks = new TasksControllers();
+                ListTask.DataSource = tasks.TaskList();
+                ListTask.DataBind();
         }
 
         protected void DeleteTask(object sender, EventArgs e)
@@ -21,6 +21,7 @@ namespace ProjectTasks.Views
             tasks.Id = Id;
             TasksControllers tasksControllers = new TasksControllers();
             tasksControllers.Delete(tasks);
+            Page_Load(sender, e);
         }
 
         protected void UpdateTask(object sender, EventArgs e)

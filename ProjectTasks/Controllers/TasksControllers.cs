@@ -9,7 +9,7 @@ namespace ProjectTasks.Controllers
 {
     public class TasksControllers
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["ProjectTasks"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ProjectTasks"].ConnectionString;
 
         public object TaskList()
         {
@@ -18,6 +18,7 @@ namespace ProjectTasks.Controllers
             SqlDataAdapter sqlData = new SqlDataAdapter("select *from TableTasksAndPerson", connection);
             DataTable dataTable = new DataTable();
             sqlData.Fill(dataTable);
+            connection.Close();
             return dataTable;
         }
 
@@ -38,6 +39,7 @@ namespace ProjectTasks.Controllers
                 };
                yield return person;
             }
+            connection.Close();
         }
 
         public string GetTask(int Id)
@@ -57,6 +59,8 @@ namespace ProjectTasks.Controllers
                     + dataReader.GetString(5) + "|"
                     + dataReader.GetInt32(6) + "";
             }
+            connection.Close();
+
             return data;
         }
 
@@ -80,6 +84,7 @@ namespace ProjectTasks.Controllers
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {
@@ -109,6 +114,7 @@ namespace ProjectTasks.Controllers
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {
@@ -131,6 +137,7 @@ namespace ProjectTasks.Controllers
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {

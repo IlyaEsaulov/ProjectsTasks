@@ -2,6 +2,7 @@
 using ProjectTasks.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -38,30 +39,46 @@ namespace ProjectTasks.Views
 
         protected void AddPerson(object sender, EventArgs e)
         {
-            Persons persons = new Persons
+            if (Page.IsValid)
             {
-                Name = name.Text,
-                Surname = surname.Text,
-                Fathername = fathername.Text
-            };
+                Persons persons = new Persons
+                {
+                    Name = name.Text,
+                    Surname = surname.Text,
+                    Fathername = fathername.Text
+                };
 
-            PersonsController personsController = new PersonsController();
-            personsController.Add(persons);
-            Response.Redirect("PersonList.aspx");
+                PersonsController personsController = new PersonsController();
+                personsController.Add(persons);
+                Response.Redirect("PersonList.aspx");
+            }
+            else
+            {
+                status.ForeColor = Color.Red;
+                status.Text = "Validation Failed!";
+            }
         }
 
         protected void EditPerson(object sender, EventArgs e)
         {
-            Persons persons = new Persons
+            if (Page.IsValid)
             {
-                Id = Convert.ToInt32(id.Text),
-                Name = name.Text,
-                Surname = surname.Text,
-                Fathername = fathername.Text
-            };
-            PersonsController personsController = new PersonsController();
-            personsController.Update(persons);
-            Response.Redirect("PersonList.aspx");
+                Persons persons = new Persons
+                {
+                    Id = Convert.ToInt32(id.Text),
+                    Name = name.Text,
+                    Surname = surname.Text,
+                    Fathername = fathername.Text
+                };
+                PersonsController personsController = new PersonsController();
+                personsController.Update(persons);
+                Response.Redirect("PersonList.aspx");
+            }
+            else
+            {
+                status.ForeColor = Color.Red;
+                status.Text = "Validation Failed!";
+            }
         }
     }
 }

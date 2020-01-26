@@ -9,7 +9,7 @@ namespace ProjectTasks.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Workload { get; set; }
+        public int Workload { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateFinish { get; set; }
         public string Status { get; set; }

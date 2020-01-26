@@ -1,15 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonList.aspx.cs" Inherits="ProjectTasks.Views.PersonList" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/StartPage.master" AutoEventWireup="true" CodeBehind="PersonList.aspx.cs" Inherits="ProjectTasks.Views.PersonList" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-</head>
-<body>
-    <form id="form1" runat="server">
-
-       <asp:Button runat="server" ID="CreateNewPerson" PostBackUrl="EnterPerson.aspx" Text="Create New Person" />
+       <asp:Button runat="server" ID="CreateNewPerson" PostBackUrl="EnterPerson.aspx" Text="Create New Person" /><br /><br />
 
         <asp:GridView ID="ListPerson" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" >
             <AlternatingRowStyle BackColor="White" />
@@ -36,8 +29,4 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-      </form>
-
-         
-</body>
-</html>
+    </asp:Content>

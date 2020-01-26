@@ -13,15 +13,6 @@ namespace ProjectTasks.Views {
     public partial class EnterPerson {
         
         /// <summary>
-        /// EnterPersonForm элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm EnterPersonForm;
-        
-        /// <summary>
         /// id элемент управления.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace ProjectTasks.Views {
         protected global::System.Web.UI.WebControls.TextBox name;
         
         /// <summary>
+        /// RequiredFieldValidatorName элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
+        
+        /// <summary>
         /// surname элемент управления.
         /// </summary>
         /// <remarks>
@@ -49,6 +49,15 @@ namespace ProjectTasks.Views {
         protected global::System.Web.UI.WebControls.TextBox surname;
         
         /// <summary>
+        /// RequiredFieldValidatorSurname элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSurname;
+        
+        /// <summary>
         /// fathername элемент управления.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace ProjectTasks.Views {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fathername;
+        
+        /// <summary>
+        /// RequiredFieldValidatorFathername элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorFathername;
         
         /// <summary>
         /// buttonAdd элемент управления.
@@ -74,5 +92,14 @@ namespace ProjectTasks.Views {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button buttonEdit;
+        
+        /// <summary>
+        /// status элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label status;
     }
 }

@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/StartPage.master.cs" CodeBehind="~/StartPage.master.cs" Inherits="ProjectTasks.StartPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2><a runat="server" href="~/Views/PersonList.aspx">Person List</a></h2>
+            <h2><a runat="server" href="~/Views/TaskList.aspx">Task List</a></h2>
+            <br />
+            <div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

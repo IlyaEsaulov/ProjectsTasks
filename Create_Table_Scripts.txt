@@ -1,0 +1,92 @@
+------------------- CREATE TABLE -------------------------------
+
+create table Persons (
+    Id         int           IDENTITY (1, 1) NOT NULL,
+    Name       nvarchar (30) NOT NULL,
+    Surname    nvarchar (50) NOT NULL,
+    Fathername nvarchar (50) NOT NULL,
+    primary key clustered (Id ASC)
+);
+
+create table Tasks (
+    Id         int            IDENTITY (1, 1) NOT NULL,
+    Title      nvarchar (MAX) NOT NULL,
+    Workload   int            NOT NULL,
+    DateStart  date           NOT NULL,
+    DateFinish date           NOT NULL,
+    Status     nvarchar (20)  NOT NULL,
+    IdPerson   int            NOT NULL,
+    primary key clustered (Id ASC),
+    foreign key (IdPerson) references Persons (Id)
+);
+
+------------------- CREATE VIEW ------------------------------------
+
+CREATE view TableTasksAndPerson as
+  select Tasks.Id, Tasks.Title,Tasks.Workload, FORMAT(Tasks.DateStart,'dd.MM.yyyy') as DateStart,  FORMAT(Tasks.DateFinish,'dd.MM.yyyy') as DateFinish, Tasks.Status, Tasks.IdPerson, Persons.Name, Persons.Surname,Persons.Fathername
+  from Tasks left join Persons on Tasks.IdPerson=Persons.Id;
+
+------------------- CREATE PROCEDURE -------------------------------
+
+CREATE PROCEDURE InsertOrUpdateOrDeleteTask
+@Id int = null,
+@Action nvarchar(10),
+@Title nvarchar(max)= null,
+@Workload int = null,
+@DateStart date = null,
+@DateFinish date = null,
+@Status nvarchar(20) = null,
+@IdPerson int = null
+AS
+begin
+	if(@Action='insert')
+		begin
+			insert into Tasks(Title,Workload,DateStart,DateFinish,Status,IdPerson) 
+			values(@Title,@Workload,@DateStart,@DateFinish,@Status,@IdPerson)
+		end
+	if (@Action='update')
+		begin
+			update Tasks Set 
+			Title=@Title, 
+			Workload=@Workload,
+			DateStart= @DateStart,
+			DateFinish= @DateFinish,
+			Status = @Status,
+			IdPerson = @IdPerson
+			where Id=@Id
+		end
+	if(@Action='delete')
+		begin
+			delete from Tasks where Id=@Id
+		end
+end
+
+
+
+
+
+CREATE PROCEDURE InsertOrUpdatePerson
+@Id int = null,
+@Action nvarchar(10),
+@Name nvarchar(30) =null,
+@Surname nvarchar(50) =null,
+@Fathername nvarchar(50)= null
+AS
+begin
+	if(@Action='insert')
+		begin
+			insert into Persons(Name,Surname,Fathername) values(@Name,@Surname,@Fathername)
+		end
+	if (@Action='update')
+		begin
+			update Persons Set 
+			Name=@Name, 
+			Surname=@Surname,
+			Fathername= @Fathername
+			where Id=@Id
+		end
+	if(@Action='delete')
+		begin
+			delete from Persons where Id=@Id
+		end
+end

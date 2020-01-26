@@ -14,9 +14,11 @@ namespace ProjectTasks.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PersonsController persons = new PersonsController();
-            ListPerson.DataSource = persons.PersonsList();
-            ListPerson.DataBind();
+
+                PersonsController persons = new PersonsController();
+                ListPerson.DataSource = persons.PersonsList();
+                ListPerson.DataBind();
+
         }
 
         protected void DeletePerson(object sender, EventArgs e)
@@ -26,6 +28,7 @@ namespace ProjectTasks.Views
             persons.Id = Id;
             PersonsController personsController = new PersonsController();
             personsController.Delete(persons);
+            Page_Load( sender,  e);
         }
 
         protected void UpdatePerson(object sender, EventArgs e)
@@ -39,5 +42,6 @@ namespace ProjectTasks.Views
         {
             Response.Redirect("EnterPerson.aspx");
         }
+
     }
 }

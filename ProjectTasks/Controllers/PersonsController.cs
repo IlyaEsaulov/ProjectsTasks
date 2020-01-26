@@ -11,7 +11,7 @@ namespace ProjectTasks.Controllers
 {
     public class PersonsController
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["ProjectTasks"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ProjectTasks"].ConnectionString;
 
         public object PersonsList()
         {
@@ -20,6 +20,7 @@ namespace ProjectTasks.Controllers
             SqlDataAdapter sqlData = new SqlDataAdapter("select *from Persons", connection);
             DataTable dataTable = new DataTable();
             sqlData.Fill(dataTable);
+            connection.Close();
             return dataTable;
         }
 
@@ -34,6 +35,7 @@ namespace ProjectTasks.Controllers
             {
                 data = ""+dataReader.GetInt32(0)+" "+dataReader.GetString(1)+ " " + dataReader.GetString(2) + " " + dataReader.GetString(3) + "";
             }
+            connection.Close();
             return data;
         }
 
@@ -54,6 +56,7 @@ namespace ProjectTasks.Controllers
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {
@@ -79,6 +82,7 @@ namespace ProjectTasks.Controllers
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {
@@ -97,10 +101,11 @@ namespace ProjectTasks.Controllers
                     CommandType = CommandType.StoredProcedure
                 };
                 sqlCommand.Parameters.Add("@Action", SqlDbType.NVarChar).Value = "delete";
-                sqlCommand.Parameters.Add("@Id", SqlDbType.NVarChar).Value = persons.Id;
+                sqlCommand.Parameters.Add("@Id", SqlDbType.Int).Value = persons.Id;
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
+                connection.Close();
             }
             catch
             {
